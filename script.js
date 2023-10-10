@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	  getWeather(city.value);
 	});
   
-	getWeather("Delhi");
+	getWeather("Mumbai");
   });
 
  
