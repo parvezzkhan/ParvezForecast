@@ -109,7 +109,7 @@
           </div>
         </div>
       </div>
-
+      <button data-grantAccess>Grant Location Access</button>
       <h2 class="display-6 text-center mb-4">Weather of other common places</h2>
 
 <!--       <div class="table-responsive">
@@ -230,6 +230,42 @@ function myStopFunction() {
     }
 }
 
+</script>
+
+  <script>
+  // Your existing code goes here
+
+  // Function to fetch weather by user's coordinates
+  async function fetchUserWeatherInfo(coordinates) {
+    const { lat, lon } = coordinates;
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+      );
+      const data = await response.json();
+      loadingScreen.classList.remove("active");
+      userInfoContainer.classList.add("active");
+      renderWeatherInfo(data);
+    } catch (err) {
+      // Handle errors
+    }
+  }
+
+  // Add an event listener to the "Grant Location Access" button
+  const grantAccessButton = document.querySelector("[data-grantAccess]");
+  grantAccessButton.addEventListener("click", getLocation);
+
+  // Add an event listener to the search form (assuming you have a form with "searchInput")
+  const searchForm = document.querySelector("form");
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let cityName = searchInput.value;
+
+    if (cityName === "") return;
+    else fetchSearchWeatherInfo(cityName);
+  });
+
+  // Your existing code for fetching weather by city name (fetchSearchWeatherInfo) remains unchanged.
 </script>
 </body>
 </html>
