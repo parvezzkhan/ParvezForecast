@@ -235,5 +235,30 @@ function myStopFunction() {
 }
 
 </script>
+
+
+   <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const getLocationBtn = document.getElementById("getLocationBtn");
+            const latitudeElement = document.getElementById("latitude");
+            const longitudeElement = document.getElementById("longitude");
+
+            getLocationBtn.addEventListener("click", () => {
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        latitudeElement.textContent = latitude;
+                        longitudeElement.textContent = longitude;
+                    }, function (error) {
+                        console.error("Error getting location:", error.message);
+                    });
+                } else {
+                    alert("Geolocation is not supported in this browser.");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
