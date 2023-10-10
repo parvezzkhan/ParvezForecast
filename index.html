@@ -13,7 +13,22 @@
   <script src="script.js"></script>
   <link href="/assets/images/wfavicon.png" rel="icon">
   <link href="assets/img/wfavicon.png" rel="wfavicon.png">
+    <style>
+    .col {
+    /* Set the initial border color */
+    border: 2px solid transparent; /* Transparent border initially */
+    transition: border-color 0.3s ease; /* Add a transition effect for smooth change */
+}
 
+.col:hover {
+    /* Apply the linear gradient border color on hover */
+    border-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+    border-image-slice: 1; /* Ensure the border gradient covers the entire border */
+    border-width: 2px; /* Set the border width as needed */
+    border-style: solid; /* Use a solid border style */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+  </style>
 </head>
 
 <body id="body">
